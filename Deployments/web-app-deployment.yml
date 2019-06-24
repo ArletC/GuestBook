@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-deployment
+  labels:
+    name: web-app
+    app: guestbook-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: webb-app-pod
+      labels:
+        name: web-app-pod
+        app: guestbook-app
+    spec:
+      containers:
+        - name: web-app
+          image: gcr.io/google-samples/gb-frontend:v4
+          ports:
+            - containerPort: 80
+  selector:
+    matchLabels:
+        name: web-app-pod
+        app: guestbook-app
